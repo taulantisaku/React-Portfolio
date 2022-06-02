@@ -4,11 +4,96 @@
 
   &--left {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &--right {
     flex: 1;
+    position: relative;
   }
   &--leftwrapper {
-    background-color: red;
+    flex: 1;
+    padding: 50px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__intro {
+    font-size: 30px;
+    font-weight: 300;
+  }
+
+  &__name {
+    font-size: 60px;
+  }
+
+  &__title {
+    height: 50px;
+    overflow: hidden;
+  }
+
+  &__title--wrapper {
+    height: 100%;
+    animation: move 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes move {
+    25% {
+      transform: translateY(-50px);
+    }
+    50% {
+      transform: translateY(-100px);
+    }
+    75% {
+      transform: translateY(-150px);
+    }
+    100% {
+      transform: translateY(-200px);
+    }
+  }
+
+  &__title__Item {
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #59b256;
+    display: flex;
+    align-items: center;
+  }
+
+  &__scroll {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 20px;
+  }
+
+  &__desc {
+  }
+
+  &__img {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1000;
+    position: absolute;
+  }
+
+  &__bg {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    background-image: url("image.pnghttps://wallpaperaccess.com/full/3037904.png");
+    background: linear-gradient(
+      90deg,
+      rgba(18, 40, 39, 1) 6%,
+      rgba(6, 72, 70, 1) 100%
+    );
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
