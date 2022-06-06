@@ -27,6 +27,7 @@ export const About = () => {
           <a
             href="https://lms.xk.beetroot.academy/diploma/ckpmq7kitrjy10791mmm5hsu3"
             target="_blank"
+            rel="noreferrer"
           >
             <img src={Award} alt="" className="About__award__img" />
           </a>
