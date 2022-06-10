@@ -11,9 +11,9 @@ export const ProdutctsList = () => {
   return (
     <div className="ProductsList">
       <div className="ProductsList__texts">
-        <h1 className="ProductsList__title">Create & inspire. It's Lama</h1>
+        <h1 className="ProductsList__title">Create & inspire</h1>
         <p className="ProductsList__desc">
-          Lama is a creative portfolio that your work has been waiting for.
+          This is a creative portfolio that your work has been waiting for.
           Beautiful homes, stunning portfolio styles & a whole lot more awaits
           inside.
         </p>
