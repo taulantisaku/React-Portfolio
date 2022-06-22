@@ -30,21 +30,21 @@ export const Contact = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    // emailjs
-    //   .sendForm(
-    //     "service_0ca64oz",
-    //     "template_zq9aehk",
-    //     e.target,
-    //     "-wjtzhtsVEBcy5GMN"
-    //   )
-    //   .then(
-    //     (result: any) => {
-    //       console.log(result.text);
-    //     },
-    //     (error: any) => {
-    //       console.log(error.text);
-    //     }
-    //   );
+    emailjs
+      .sendForm(
+        "service_0ca64oz",
+        "template_zq9aehk",
+        e.target,
+        "-wjtzhtsVEBcy5GMN"
+      )
+      .then(
+        (result: any) => {
+          console.log(result.text);
+        },
+        (error: any) => {
+          console.log(error.text);
+        }
+      );
     e.target.reset();
   };
   return (
