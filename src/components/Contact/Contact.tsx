@@ -1,4 +1,5 @@
-import { useContext, useRef, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import emailjs from "emailjs-com";
 
 //style
@@ -16,27 +17,35 @@ import Github from "../../img/github.png";
 import Instagram from "../../img/instagram.png";
 
 export const Contact = () => {
-  // #TODO fix formRef with useRef or useState & functionality of email
-
-  const formRef = document.getElementById("formRef") as HTMLFormElement;
+  const notify = () =>
+    toast.success("Your message was sent successfuly!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_0ca64oz",
-        "template_zq9aehk",
-        formRef.current,
-        "-wjtzhtsVEBcy5GMN"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     "service_0ca64oz",
+    //     "template_zq9aehk",
+    //     e.target,
+    //     "-wjtzhtsVEBcy5GMN"
+    //   )
+    //   .then(
+    //     (result: any) => {
+    //       console.log(result.text);
+    //     },
+    //     (error: any) => {
+    //       console.log(error.text);
+    //     }
+    //   );
+    e.target.reset();
   };
   return (
     <div className="Contact">
@@ -76,7 +85,7 @@ export const Contact = () => {
             <b>What’s your story?</b> Get in touch. Always available for
             freelancing if the right project comes along. me.
           </p>
-          <form id="formRef" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Name" name="user_name" id="" />
             <input
               type="text"
@@ -86,7 +95,8 @@ export const Contact = () => {
             />
             <input type="text" placeholder="Email" name="user_email" id="" />
             <textarea placeholder="Message" name="message" rows={10}></textarea>
-            <button>Submit</button>
+            <button onClick={notify}>Submit</button>
+            <ToastContainer />
           </form>
         </div>
       </div>
