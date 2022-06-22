@@ -1,6 +1,7 @@
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 import emailjs from "emailjs-com";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 //style
 
@@ -10,13 +11,14 @@ import "../Contact/Contact.scss";
 
 import Phone from "../../img/phone.png";
 import Email from "../../img/email.png";
+import Github from "../../img/github.png";
 import Address from "../../img/address.png";
 import Facebook from "../../img/facebook.png";
 import Linkedin from "../../img/linkedin.png";
-import Github from "../../img/github.png";
 import Instagram from "../../img/instagram.png";
 
 export const Contact = () => {
+  const [done, setDone] = useState(false);
   const notify = () =>
     toast.success("Your message was sent successfuly!", {
       position: "bottom-right",
@@ -29,7 +31,7 @@ export const Contact = () => {
     });
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
+    //#TODO form validation if empty
     emailjs
       .sendForm(
         "service_0ca64oz",
@@ -40,6 +42,7 @@ export const Contact = () => {
       .then(
         (result: any) => {
           console.log(result.text);
+          setDone(true);
         },
         (error: any) => {
           console.log(error.text);
@@ -97,6 +100,7 @@ export const Contact = () => {
             <textarea placeholder="Message" name="message" rows={10}></textarea>
             <button onClick={notify}>Submit</button>
             <ToastContainer />
+            {done && <>Thanks for reaching out, I will get back to you asap!</>}
           </form>
         </div>
       </div>
