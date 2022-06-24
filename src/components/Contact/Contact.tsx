@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import emailjs from "emailjs-com";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,9 +16,12 @@ import Address from "../../img/address.png";
 import Facebook from "../../img/facebook.png";
 import Linkedin from "../../img/linkedin.png";
 import Instagram from "../../img/instagram.png";
+import { ThemeContext } from "../../lib/context/ThemeContext";
 
 export const Contact = () => {
   const [done, setDone] = useState(false);
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
   const notify = () =>
     toast.success("Your message was sent successfuly!", {
       position: "bottom-right",
@@ -89,15 +92,33 @@ export const Contact = () => {
             freelancing if the right project comes along. me.
           </p>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Name" name="user_name" id="" />
             <input
+              style={{ backgroundColor: darkMode && "#333" }}
+              type="text"
+              placeholder="Name"
+              name="user_name"
+              id=""
+            />
+            <input
+              style={{ backgroundColor: darkMode && "#333" }}
               type="text"
               placeholder="Subject"
               name="user_subject"
               id=""
             />
-            <input type="text" placeholder="Email" name="user_email" id="" />
-            <textarea placeholder="Message" name="message" rows={10}></textarea>
+            <input
+              style={{ backgroundColor: darkMode && "#333" }}
+              type="text"
+              placeholder="Email"
+              name="user_email"
+              id=""
+            />
+            <textarea
+              style={{ backgroundColor: darkMode && "#333" }}
+              placeholder="Message"
+              name="message"
+              rows={10}
+            ></textarea>
             <button onClick={notify}>Submit</button>
             <ToastContainer />
             {done && <>Thanks for reaching out, I will get back to you asap!</>}
