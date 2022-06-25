@@ -1,5 +1,5 @@
 import "./About.scss";
-import Me from "../../img/Taulant-Isaku.jpg";
+import Me from "../../img/me-coding.jpeg";
 import Award from "../../img/javascript-beetroot.jpg";
 
 export const About = () => {
