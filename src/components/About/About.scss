@@ -75,6 +75,9 @@
     margin-bottom: 10px;
   }
 
+
+}
+
   @media screen and (max-width: 480px) {
     .About {
       flex-direction: column;
@@ -96,6 +99,6 @@
       &__right {
         padding: 20px;
       }
+      
     }
   }
-}

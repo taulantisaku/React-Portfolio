@@ -18,10 +18,33 @@ import Linkedin from "../../img/linkedin.png";
 import Instagram from "../../img/instagram.png";
 import { ThemeContext } from "../../lib/context/ThemeContext";
 
+const initialState = {
+  user_name: "",
+  user_subject: "",
+  user_email: "",
+  message: "",
+};
+
 export const Contact = () => {
   const [done, setDone] = useState(false);
+  const [formData, setFormData] = useState(initialState);
+
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   const notify = () =>
     toast.success("Your message was sent successfuly!", {
       position: "bottom-right",
@@ -53,6 +76,7 @@ export const Contact = () => {
       );
     e.target.reset();
   };
+
   return (
     <div className="Contact">
       <div className="Contact__bg"></div>
@@ -95,28 +119,36 @@ export const Contact = () => {
             <input
               style={{ backgroundColor: darkMode && "#333" }}
               type="text"
+              value={formData.user_name}
               placeholder="Name"
               name="user_name"
               id=""
+              onChange={handleChange}
             />
             <input
               style={{ backgroundColor: darkMode && "#333" }}
               type="text"
+              value={formData.user_subject}
               placeholder="Subject"
               name="user_subject"
               id=""
+              onChange={handleChange}
             />
             <input
               style={{ backgroundColor: darkMode && "#333" }}
               type="text"
+              value={formData.user_email}
               placeholder="Email"
               name="user_email"
               id=""
+              onChange={handleChange}
             />
             <textarea
               style={{ backgroundColor: darkMode && "#333" }}
               placeholder="Message"
+              value={formData.message}
               name="message"
+              onChange={handleTextAreaChange}
               rows={10}
             ></textarea>
             <button onClick={notify}>Submit</button>
