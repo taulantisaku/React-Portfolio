@@ -45,10 +45,9 @@ export const Contact = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setDone(true);
   };
 
-  const notify = () =>
+  const notify = () => {
     toast.success("Your message was sent successfuly!", {
       position: "bottom-right",
       autoClose: 5000,
@@ -58,6 +57,7 @@ export const Contact = () => {
       draggable: true,
       progress: undefined,
     });
+  };
 
   const canBeSubmitted = () => {
     return isEnabled;
@@ -93,6 +93,7 @@ export const Contact = () => {
       .then(
         (result: any) => {
           console.log(result.text);
+          setFormData(initialState);
           setDone(true);
         },
         (error: any) => {
@@ -212,7 +213,7 @@ export const Contact = () => {
               </Button>
               <ToastContainer />
               {done && (
-                <>Thanks for reaching out, I will get back to you asap!</>
+                <div>Thanks for reaching out, I will get back to you asap!</div>
               )}
             </FormGroup>
           </Form>
